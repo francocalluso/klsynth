@@ -1,0 +1,11 @@
+.w2 {
+    width:2rem;
+}
+
+.h2 {
+    height: 2.5rem;
+}
+
+.invert {
+    filter:invert();
+}
