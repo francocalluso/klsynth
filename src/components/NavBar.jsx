@@ -1,36 +1,36 @@
-import React from 'react'
+
 import CartWidget from './CartWidget'
-import logo from '../imagenes/logo2.png'
+import Logo from './Logo'
+
 import './NavBar.css'
+
+import {Container, Nav, Navbar} from 'react-bootstrap'
 
 
 
 function NavBar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a className="navbar-brand" href="#">
-            <img className='h2' src={logo} alt="logo" />
-        </a>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
-                <li className="nav-item active">
-                    <a className="nav-link" href="#">Sintetizadores <span className="sr-only">(current)</span></a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link" href="#">Accesorios</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link" href="#">FX</a>
-                </li>
-            </ul>
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Container>
+            <Navbar.Brand href="#home">
+               <Logo/>
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="responsive-navbar-nav">
+                <Nav className="me-auto">
+                    <Nav.Link href="#features">Sintetizadores</Nav.Link>
+                    <Nav.Link href="#pricing">Accesorios</Nav.Link>
+                    <Nav.Link href="#pricing">FX</Nav.Link>
+                </Nav>
+                <Nav>
+                    <CartWidget/>
+                </Nav>
+            </Navbar.Collapse>            
+        </Container>
+    </Navbar>
         
-        </div>
-        <CartWidget/>
        
-    </nav>
+
   )
 }
 
