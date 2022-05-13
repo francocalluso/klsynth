@@ -1,5 +1,5 @@
 import React from 'react'
-import cart from '../imagenes/cart.png'
+import cart from '../../imagenes/cart.png'
 
 
 function CartWidget() {
