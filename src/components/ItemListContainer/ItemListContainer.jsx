@@ -1,42 +1,55 @@
 import React, { useEffect, useState } from 'react'
+import { Spinner } from 'react-bootstrap';
 import ItemList from '../ItemList/ItemList'
+import {productos} from '../../data'
+import { getFetch } from '../../helpers/getFetch';
 
-const productos = [
-  {id:'1', name:'Moog Minitaur', description:'Sintetizador analogico de bajos', stock:'4'},
-  {id:'2', name:'Nord Drum', description:'Lorem Ipsum bla bla bla', stock:'15'},
-  {id:'3', name:'Korg Minilogue XD', description:'blablabla', stock:'3'},
-  {id:'4', name:'Arturia Microfreak', description:'Lorem ipsum', stock:'4'},
-  {id:'5', name:'Arturia Minibrute', description:'Lorem ipsum', stock:'10'}
-]
+import './ItemListContainer.css'
+import { useParams } from 'react-router-dom';
 
-const getFetch = new Promise((res,rej)=>{
- setTimeout(()=> {
-  res(productos)
- }, 3000);
-//  rej('400 rejected')
-})
+
+// const getFetch = new Promise((res,rej)=>{
+//  setTimeout(()=> {
+//   res(productos)
+//  }, 3000);
+// //  rej('400 rejected')
+// })
 
 
 function ItemListContainer() {
   
   const [productos,setProductos] = useState([])
   const [loading,setLoading] = useState(true)
+  
+  const {id} = useParams()
 
   useEffect(()=> {
-    getFetch
-    .then((respuesta)=> setProductos(respuesta))
-    .catch((err) => console.log(err))
-    .finally(()=> setLoading(false))
-    }, [])
+    if(id) {
+      getFetch()
+      .then(respuesta => setProductos(respuesta.filter((prods)=> prods.categoria === id)))
+      .catch((err) => console.log(err))
+      .finally(()=> setLoading(false))
+    }else {
+      getFetch()
+      .then((respuesta)=> setProductos(respuesta))
+      .catch((err) => console.log(err))
+      .finally(()=> setLoading(false))
+      
+    }
+  }, [id])
+    
+    
+   
 
     console.log(productos)
  
   return (
-    <>
-  
-    { loading ? <h2>Cargando...</h2> :
-     <ItemList/>}
-    </>
+
+    <div className='flex-center m-0 bg-img'>
+    { loading ? 
+      <Spinner className='my-4' animation="border" variant="warning" /> :
+      <ItemList productos={productos}/>}
+    </div>
 
   )
 }

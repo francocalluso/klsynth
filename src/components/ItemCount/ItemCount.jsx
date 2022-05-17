@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './ItemCount.css'
 
 function ItemCount({stock, initial=1}) {
     
@@ -28,11 +29,14 @@ function ItemCount({stock, initial=1}) {
   
     
     return (
-    <div className='m-3'>
-        <button onClick={decrease} className=' btn btn-secondary'>-</button>
-        <span className='px-4 py-2 '>{count}</span>
-        <button onClick={increase} className='btn btn-secondary'>+</button>
-        <p className='m-3' >Stock: {stock}</p>
+    <div>
+        <div>
+            <button onClick={decrease} className=' btn btn-secondary'>-</button>
+            <span className='px-4 py-2 '>{count}</span>
+            <button onClick={increase} className='btn btn-secondary'>+</button>
+        </div>
+        
+        <p className='my-3'>Stock: {stock}</p>
         <button onClick={add} className=' btn btn-warning'>Agregar al carrito</button>
     </div>
   )

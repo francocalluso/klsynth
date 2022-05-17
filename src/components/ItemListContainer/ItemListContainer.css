@@ -1,0 +1,11 @@
+.flex-center {
+    display:flex;
+    justify-content: center;
+}
+
+body {
+    background-image: url('https://res.cloudinary.com/dkhnmmnqo/image/upload/v1652638053/synthbg4_po5yzt.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}

@@ -1,23 +1,26 @@
 import ItemCount from "../ItemCount/ItemCount"
-import {Card} from 'react-bootstrap'
+import {Button, Card} from 'react-bootstrap'
+import './Item.css'
+import { Link } from "react-router-dom"
 
 
-function Item({id, name, description, stock, img}) {
+function Item({id, name, price, description, stock, img}) {
+
+
   return (
-    <Card className='m-4 ' style={{ width: '18rem' }} id={id}>
-    <Card.Img variant="top" src={img} />
-    <Card.Body>
-      <Card.Title>{name}</Card.Title>
-      <Card.Text>
-        {description}
-      </Card.Text>
-      <ItemCount stock={stock}/>
-    </Card.Body>
-  </Card>
-    // <div key={id}>
-    //     <h4>{name}</h4>
-    //     <ItemCount stock={stock}/>
-    // </div>
+    <Card className='m-4 bg-trans itemHover' style={{ width: '18rem' }} id={id}>
+        <Link to={`/detalle/${id}`}>
+        <Card.Img className='p-3 img-blend' variant="top" src={img} />
+        <Card.Body>
+          
+            <Card.Title >{name}</Card.Title>
+            <Card.Subtitle >{price}</Card.Subtitle>
+            <Card.Text className='text-secondary'>
+                {description}
+            </Card.Text>
+        </Card.Body>
+        </Link>       
+    </Card>
       )
 }
 

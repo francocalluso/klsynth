@@ -1,0 +1,17 @@
+.w3 {
+    width:18rem;
+}
+
+.flex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (min-width: 800px) {
+    .flex{
+        display: flex;
+        flex-direction: row;
+    }
+}

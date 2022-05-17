@@ -1,0 +1,27 @@
+*  {
+    text-decoration: none;
+    color:black;
+}
+
+a:link, a:hover, a:active, a:visited  {
+    text-decoration: none;
+    color:black;
+}
+
+.lh-2 {
+    line-height: 3rem;
+}
+
+.bg-trans{
+    background-color: rgba(255, 255, 255,0.8)!important;
+}
+
+.img-blend {
+    mix-blend-mode: multiply;
+}
+
+.itemHover:hover {
+    transform: scale(1.02);
+    transition:0.3s ease-in-out;
+}
+
