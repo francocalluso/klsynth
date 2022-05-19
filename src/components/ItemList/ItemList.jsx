@@ -12,6 +12,7 @@ function ItemList({productos}) {
         {productos.map((prod) => <Item 
                                     key={prod.id}
                                     id={prod.id}
+                                    categoria={prod.categories}
                                     className='itemHover' 
                                     name={prod.name} 
                                     stock={prod.stock} 

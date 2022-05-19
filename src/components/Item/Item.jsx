@@ -4,7 +4,7 @@ import './Item.css'
 import { Link } from "react-router-dom"
 
 
-function Item({id, name, price, description, stock, img}) {
+function Item({id, name, price, description, img}) {
 
 
   return (

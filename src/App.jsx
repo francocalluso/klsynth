@@ -10,34 +10,28 @@ import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailCont
 
 function App() {
 
-  // const [productos,setProductos] = useState([])
 
-    // const getFetch = async () => {
-    //   try{
-    //     const peticion = await fetch('./../assets/data.json')
-    //     const peticionParse = JSON.parse(peticion)
-    //     setProductos(peticionParse)
-    //   } catch(err) {
-    //     console.log(err)
-    //   }
-    // }
+
+  //Fetch a json en assets
+
+  // const [productos,setProductos] = useState([])
 
   // useEffect(()=> {
   //   fetch('./../assets/data.json')
   //   .then((respuesta)=>respuesta.json())
   //   .then((resp)=> setProductos(resp))
-  //   .catch()
-  //   .finally()
-    // getFetch()
+  //   .catch((err)=> console.log(err))
+  //   .finally(()=>console.log())
   // },[])
 
-
+  // console.log(productos)
  
   return (
     <BrowserRouter>
     <Navbar/>
     <Routes> 
-      <Route path="/" element={<ItemListContainer/>}/>  
+      <Route path="/" element={<ItemListContainer/>}/>
+      <Route path="/categories/:id" element={<ItemListContainer/>}/>  
       <Route path="/detalle/:detalleId" element={<ItemDetailContainer/>}/>
     </Routes>
     </BrowserRouter>

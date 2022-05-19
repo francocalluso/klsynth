@@ -1,11 +1,13 @@
 *  {
     text-decoration: none;
-    color:black;
+    color:inherit;
+    
 }
 
 a:link, a:hover, a:active, a:visited  {
     text-decoration: none;
-    color:black;
+    color:inherit;
+    
 }
 
 .lh-2 {

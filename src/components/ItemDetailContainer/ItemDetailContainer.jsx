@@ -8,6 +8,7 @@ function ItemDetailContainer() {
 
     const [producto, setProducto] = useState({})
     const [loading, setLoading] = useState(true)
+    
     const {detalleId} = useParams()   
 
     
@@ -17,7 +18,7 @@ function ItemDetailContainer() {
       .catch((err)=> console.log(err))
       .finally(()=> setLoading(false))), 1500)          
       },[detalleId])
-
+ 
 
       console.log(producto)
       console.log(detalleId)

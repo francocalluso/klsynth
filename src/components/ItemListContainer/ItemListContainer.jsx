@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Spinner } from 'react-bootstrap';
 import ItemList from '../ItemList/ItemList'
-import {productos} from '../../data'
 import { getFetch } from '../../helpers/getFetch';
 
 import './ItemListContainer.css'
@@ -26,7 +25,7 @@ function ItemListContainer() {
   useEffect(()=> {
     if(id) {
       getFetch()
-      .then(respuesta => setProductos(respuesta.filter((prods)=> prods.categoria === id)))
+      .then(respuesta => setProductos(respuesta.filter((prods)=> prods.categories === id)))
       .catch((err) => console.log(err))
       .finally(()=> setLoading(false))
     }else {
@@ -38,11 +37,8 @@ function ItemListContainer() {
     }
   }, [id])
     
-    
-   
-
-    console.log(productos)
  
+
   return (
 
     <div className='flex-center m-0 bg-img'>
