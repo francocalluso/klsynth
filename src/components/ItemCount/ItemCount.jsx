@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './ItemCount.css'
 
-function ItemCount({stock, initial=1}) {
+function ItemCount({stock, initial=1, handleInputType}) {
     
     const [count, setCount] = useState(initial)
     
@@ -24,7 +24,7 @@ function ItemCount({stock, initial=1}) {
     }
   
     function add(){
-        console.log('Añadiste '+ count + ' items al carrito.')
+        handleInputType();
     }
   
     

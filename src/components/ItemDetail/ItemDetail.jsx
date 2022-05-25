@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import BuyButton from '../BuyButton/BuyButton'
 import ItemCount from '../ItemCount/ItemCount'
 import './ItemDetail.css'
 
 function ItemDetail({producto}) {
+
+  const [inputType, setInputType] = useState('itemCount');
+
+  function handleInputType() {
+    setInputType('buyButton');
+}
+
+
   return (
     
   <div className='flex bg-light m-3 rounded ' id={producto.id}>        
@@ -13,10 +22,10 @@ function ItemDetail({producto}) {
         <h2>{producto.name}</h2>
         <h3>{producto.price}</h3>
         <p>{producto.description}</p>
-        <ItemCount stock={producto.stock}/>
-        <Link to='/'>
-          <Button className='my-3' variant="dark">Volver</Button>
-        </Link>
+        {inputType === 'itemCount' ?
+                    <ItemCount initial={1} stock={producto.stock} handleInputType={handleInputType}/>:
+                    <BuyButton/>}
+        
       </div>
   </div>
 
