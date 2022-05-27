@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { useCartContext} from '../../context/CartContext'
 import BuyButton from '../BuyButton/BuyButton'
 import ItemCount from '../ItemCount/ItemCount'
 import './ItemDetail.css'
@@ -8,11 +9,18 @@ import './ItemDetail.css'
 function ItemDetail({producto}) {
 
   const [inputType, setInputType] = useState('itemCount');
+  const {addToCart} = useCartContext()
 
   function handleInputType() {
     setInputType('buyButton');
 }
 
+  const onAdd = (count) =>{
+    console.log(`Has agregado ${count} producto/s a tu carrito`)
+    addToCart({...producto, count})
+  }
+     
+  
 
   return (
     
@@ -23,7 +31,7 @@ function ItemDetail({producto}) {
         <h3>{producto.price}</h3>
         <p>{producto.description}</p>
         {inputType === 'itemCount' ?
-                    <ItemCount initial={1} stock={producto.stock} handleInputType={handleInputType}/>:
+                    <ItemCount onAdd={onAdd} initial={1} stock={producto.stock} handleInputType={handleInputType}/>:
                     <BuyButton/>}
         
       </div>
