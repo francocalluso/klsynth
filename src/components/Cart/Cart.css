@@ -1,3 +1,9 @@
-.w3 {
-    width:18rem;
+.h5rem {
+    height: 5rem;
+    width: auto;
+}
+
+.h2rem {
+    height: 2rem;
+    width: auto;
 }

@@ -12,22 +12,23 @@ export const Cart = () => {
 
 console.log(total)
   return (
-    <div>
-      <div>
-        <h2 className="text-light">Tu pedido</h2>
+    <div className="container">
+      <div className="list-group col-lg-6">
+        <h4 className="text-dark bg-warning my-3 p-3">Tu pedido</h4>
           {cartList.map(product => 
-          <li className="cartItem">
-            <Link to={`/detail/${product.id}`}>
-            <img className="w3 m-3" src={product.img}></img>
-            </Link>
-            <p className="text-light">{product.name}</p>
-            <p className="text-light">Precio: {product.price}</p>
-            <p className="text-light">Cantidad: {product.count}u</p>
-            <button className="btn btn-danger" onClick={()=>deleteItem(product.id)}>X</button>
+          <li className="list-group-item d-inline-flex my-3">    
+            <img className="h5rem m-3" src={product.img}></img>
+            <div>
+              <p className="text-dark">{product.name}</p>
+              <p className="text-dark">Precio: ${product.price}</p>
+              <p className="text-dark">Cantidad: {product.count}u</p>
+            </div>                        
+            <button className="btn btn-danger mx-4 h2rem" onClick={()=>deleteItem(product.id)}>X</button>
           </li>)}
-          {cartList.length ? <div>`
-                                <h3 className="text-light">Total: {total}</h3>
-                                <button className="btn btn-danger" onClick={deleteCart}>Vaciar Carrito</button>
+
+          {cartList.length ? <div className="d-inline-flex my-4 bg-dark p-3">`
+                                <h3 className="text-light">Total: ${total}</h3>
+                                <button className="btn btn-danger mx-4" onClick={deleteCart}>Vaciar Carrito</button>
                             </div>  : <div className="text-light">
                                                 <p className="text-light">No hay productos en tu carrito</p>
                                                 <Link to={"/"}>

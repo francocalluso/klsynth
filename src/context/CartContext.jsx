@@ -13,13 +13,13 @@ const CartContextProvider = ({children}) => {
     }
     function addToCart(item) {
         if (isInCart(item.id)) {
-            alert("Ya agregaste este producto")
+            
             let i = cartList.findIndex(el => el.id === item.id);
             const newCartList = cartList;
             newCartList[i].quantity += item.quantity;
             setCartList(newCartList);
         } else {
-            alert("Ya agregaste este producto")
+           
 
             setCartList([
                 ...cartList,

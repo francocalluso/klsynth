@@ -14,7 +14,7 @@ function Item({id, name, price, description, img}) {
         <Card.Body>
           
             <Card.Title >{name}</Card.Title>
-            <Card.Subtitle >{price}</Card.Subtitle>
+            <Card.Subtitle >${price}</Card.Subtitle>
             <Card.Text className='text-secondary'>
                 {description}
             </Card.Text>

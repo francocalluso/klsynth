@@ -1,0 +1,12 @@
+.cartItemCount{        
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 100%;
+    border-style: none;
+    color: rgb(255, 255, 255);
+    background-color: red;
+    cursor: pointer;
+    font-size: small;
+    font-weight: bolder;
+    transform: translateY(-15px);
+}
