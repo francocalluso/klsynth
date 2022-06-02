@@ -1,5 +1,5 @@
-import ItemCount from "../ItemCount/ItemCount"
-import {Button, Card} from 'react-bootstrap'
+
+import {Card} from 'react-bootstrap'
 import './Item.css'
 import { Link } from "react-router-dom"
 

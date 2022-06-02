@@ -1,6 +1,4 @@
-import React, { useContext, useState } from 'react'
-import { Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
 import { useCartContext} from '../../context/CartContext'
 import BuyButton from '../BuyButton/BuyButton'
 import ItemCount from '../ItemCount/ItemCount'

@@ -7,12 +7,6 @@ import './ItemListContainer.css'
 import { useParams } from 'react-router-dom';
 
 
-// const getFetch = new Promise((res,rej)=>{
-//  setTimeout(()=> {
-//   res(productos)
-//  }, 3000);
-// //  rej('400 rejected')
-// })
 
 
 function ItemListContainer() {
