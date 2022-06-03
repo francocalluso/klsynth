@@ -9,3 +9,4 @@ Tienda online especializada donde encontrarás todo lo relacionado a sintetizado
     -Bootstrap // v 5.1.3
     -react-bootstrap // v2.3.1
     -react-router-dom // v 6.3.0
+    -firebase // 9.8.2
