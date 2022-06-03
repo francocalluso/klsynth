@@ -13,10 +13,10 @@ export const Cart = () => {
 console.log(total)
   return (
     <div className="container">
-      <div className="list-group col-lg-6">
-        <h4 className="text-dark bg-warning my-3 p-3">Tu pedido</h4>
+      <div className="list-group col-lg-6 rounded my-3 transparent">
+        <h4 className="text-dark bg-warning m-3 p-3 rounded">Tu pedido</h4>
           {cartList.map(product => 
-          <li className="list-group-item d-inline-flex justify-content-between align-items-center my-3">    
+          <li className="list-group-item d-inline-flex justify-content-between align-items-center m-3">    
             <img className="h5rem m-3" src={product.img}></img>
             <div>
               <p className="text-dark fw-bold">{product.name}</p>
@@ -26,11 +26,13 @@ console.log(total)
             <button className="btn btn-danger mx-4 fw-bolder" onClick={()=>deleteItem(product.id)}>x</button>
           </li>)}
 
-          {cartList.length ? <div className="d-inline-flex justify-content-between my-4 bg-dark p-3">`
-                                <h3 className="text-light">Total: ${total}</h3>
-                                <button className="btn btn-danger mx-4" onClick={deleteCart}>Vaciar Carrito</button>
-                            </div>  : <div className="text-light">
-                                                <p className="text-light">No hay productos en tu carrito</p>
+          {cartList.length ? <>                              
+                              <div className="d-inline-flex justify-content-between m-3 rounded bg-dark p-3">`
+                                <h4 className="text-light">Total: ${total}</h4>                                
+                              </div>
+                              <button className="btn btn-danger m-3" onClick={deleteCart}>Vaciar Carrito</button>
+                            </>  : <div className="text-dark m-3">
+                                                <p className="text-dark fw-bolder">No hay productos en tu carrito</p>
                                                 <Link to={"/"}>
                                                   <p className="btn btn-secondary">Ir a la tienda</p>
                                         

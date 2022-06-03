@@ -1,7 +1,7 @@
+import { doc, getDoc, getFirestore } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import { Spinner } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
-import {getFetch} from '../../helpers/getFetch'
 import ItemDetail from '../ItemDetail/ItemDetail'
 
 function ItemDetailContainer() {
@@ -11,17 +11,16 @@ function ItemDetailContainer() {
     
     const {detalleId} = useParams()   
 
-    
-    useEffect(() => {
-      setTimeout((getFetch(detalleId)
-      .then(respuesta => setProducto(respuesta))
-      .catch((err)=> console.log(err))
-      .finally(()=> setLoading(false))), 1500)          
-      },[detalleId])
- 
 
-      console.log(producto)
-      console.log(detalleId)
+    useEffect(()=>{
+        const db = getFirestore()
+        const dbQuery = doc(db, 'items', detalleId)
+        getDoc(dbQuery)
+        .then(resp => setProducto({id: resp.id, ...resp.data()}))
+        .catch((err)=> console.log(err))
+        .finally(()=> setLoading(false), 1500) 
+      }, [detalleId])
+    
 
   return (
     <div className='flex-center m-0 bg-img'>

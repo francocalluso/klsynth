@@ -26,7 +26,7 @@ function ItemDetail({producto}) {
     <img className='w3 m-3' src={producto.img} />
       <div className=' mx-5 p-5 flex-column'>
         <h2>{producto.name}</h2>
-        <h3>{producto.price}</h3>
+        <h3>${producto.price}</h3>
         <p>{producto.description}</p>
         {inputType === 'itemCount' ?
                     <ItemCount onAdd={onAdd} initial={1} stock={producto.stock} handleInputType={handleInputType}/>:

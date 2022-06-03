@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Spinner } from 'react-bootstrap';
 import ItemList from '../ItemList/ItemList'
-import { getFetch } from '../../helpers/getFetch';
-
+import {getFirestore, getDocs, collection, query, where} from 'firebase/firestore'
 import './ItemListContainer.css'
 import { useParams } from 'react-router-dom';
 
@@ -16,21 +15,26 @@ function ItemListContainer() {
   
   const {id} = useParams()
 
-  useEffect(()=> {
-    if(id) {
-      getFetch()
-      .then(respuesta => setProductos(respuesta.filter((prods)=> prods.categories === id)))
-      .catch((err) => console.log(err))
-      .finally(()=> setLoading(false))
-    }else {
-      getFetch()
-      .then((respuesta)=> setProductos(respuesta))
-      .catch((err) => console.log(err))
-      .finally(()=> setLoading(false))
+
+  useEffect(()=>{
+      if(id){
+        const db = getFirestore()
+        const queryCollection = collection(db, 'items')
+        const queryCollectionFilter = query(queryCollection, where('categories','==', id ))
+        getDocs(queryCollectionFilter)
+        .then(resp => setProductos(resp.docs.map( item => ({ id: item.id, ...item.data() }))))
+        .catch((err) => console.log(err))
+        .finally(()=> setLoading(false))
+      }else {
+        const db = getFirestore()
+        const queryCollection = collection(db, 'items')
+        getDocs(queryCollection)
+        .then(resp => setProductos(resp.docs.map( item => ({ id: item.id, ...item.data() }))))
+        .catch((err) => console.log(err))
+        .finally(()=> setLoading(false))
+     }
       
-    }
-  }, [id])
-    
+    }, [id])
  
 
   return (

@@ -9,7 +9,7 @@ function BuyButton() {
             <button className='btn btn-secondary m-3'>Seguir comprando</button>
         </Link>
         <Link to={"/cart"}>
-            <button className='btn btn-success m-3'>Ver el carrito</button>
+            <button className='btn btn-warning m-3'>Ver el carrito</button>
         </Link>
     </div>
 </>
