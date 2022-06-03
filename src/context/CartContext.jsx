@@ -7,6 +7,9 @@ export const useCartContext = () => useContext(CartContext)
 const CartContextProvider = ({children}) => {
 
     const [cartList, setCartList] = useState([])
+    const [totalPrice, setTotalPrice] = useState(0)
+    const [totalItems, setTotalItems] = useState(0)
+    
 
     function isInCart(id) {
         return cartList.some(el => el.id === id);
@@ -14,34 +17,43 @@ const CartContextProvider = ({children}) => {
     function addToCart(item) {
         if (isInCart(item.id)) {
             
-            let i = cartList.findIndex(el => el.id === item.id);
-            const newCartList = cartList;
-            newCartList[i].quantity += item.quantity;
-            setCartList(newCartList);
+            let i = cartList.findIndex(el => el.id === item.id)
+            const newCartList = cartList
+            newCartList[i].count += item.count
+            updateCart(newCartList)
         } else {
            
-
-            setCartList([
-                ...cartList,
-                item]);
+            updateCart([...cartList, item])
         }
     }
 
     const deleteItem = (id) => {
-        const newCart = [...cartList];
-        let index = newCart.findIndex((product) => product.id ===id);
-        newCart.splice(index,1);
-
-        setCartList([...newCart])
+        const newCartList = cartList.filter(el => el.id !== id);
+        updateCart(newCartList);
     }
 
     const deleteCart = () => {
-        setCartList([])
+        updateCart([])
     }
 
+    function updateCart(arr) {
+        setCartList(arr);
+        setTotalPrice(arr
+            .map(curr => curr.count*curr.price)
+            .reduce((acc,curr) => acc+curr,0)
+        );
+        setTotalItems(arr
+            .map(curr => curr.count)
+            .reduce((acc,curr) => acc+curr,0)
+        );
+        
+    }
+        console.log( totalItems)
     return (
         <CartContext.Provider value = { {
             cartList,
+            totalPrice,
+            totalItems,
             addToCart,
             deleteItem,
             deleteCart

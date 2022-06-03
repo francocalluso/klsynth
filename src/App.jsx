@@ -8,6 +8,7 @@ import { useEffect, useState} from "react";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import CartContextProvider from "./context/CartContext";
 import { Cart } from "./components/Cart/Cart";
+import CartList from "./components/CartList/CartList";
 
 
 function App() {
