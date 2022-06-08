@@ -1,3 +1,4 @@
+import { addDoc, collection, getFirestore } from 'firebase/firestore';
 import {createContext, useContext, useState} from 'react';
 
 const CartContext = createContext([])
@@ -9,6 +10,7 @@ const CartContextProvider = ({children}) => {
     const [cartList, setCartList] = useState([])
     const [totalPrice, setTotalPrice] = useState(0)
     const [totalItems, setTotalItems] = useState(0)
+    const [orderId, setOrderId] = useState()
     
 
     function isInCart(id) {
@@ -48,7 +50,34 @@ const CartContextProvider = ({children}) => {
         );
         
     }
-        console.log( totalItems)
+
+    function createOrder(buyerData) { 
+    
+        let order = {}
+    
+        order.buyerData = buyerData
+        order.totalPrice = totalPrice
+        
+        order.items = cartList.map(item => {
+          const id = item.id
+          const name = item.name
+          const quantity = item.count
+          const price = item.price * item.count
+    
+          return {id, name, quantity, price}
+        })
+    
+        const db= getFirestore()
+        const queryCollectionOrder = collection(db, 'orders')
+        addDoc(queryCollectionOrder, order)
+        .then(resp => console.log(resp))
+        .catch(err=>console.log(err))
+        .finally(()=>deleteCart())
+    }
+
+
+
+
     return (
         <CartContext.Provider value = { {
             cartList,
@@ -56,7 +85,8 @@ const CartContextProvider = ({children}) => {
             totalItems,
             addToCart,
             deleteItem,
-            deleteCart
+            deleteCart,
+            createOrder
         } }>
             {children}
         </CartContext.Provider>
