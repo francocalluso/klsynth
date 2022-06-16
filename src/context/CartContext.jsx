@@ -10,7 +10,6 @@ const CartContextProvider = ({children}) => {
     const [cartList, setCartList] = useState([])
     const [totalPrice, setTotalPrice] = useState(0)
     const [totalItems, setTotalItems] = useState(0)
-    const [orderId, setOrderId] = useState()
     
 
     function isInCart(id) {

@@ -1,6 +1,6 @@
 # KLSYNTH
 
-Tienda online especializada donde encontrarás todos los sintetizadores, accesorios o FX que necesitarás para crear música electrónica
+Tienda online especializada donde encontrarás todos los sintetizadores, accesorios o FX que necesitarás para crear tu música
 
 ## Link a la página: https://klsynth.netlify.app/
 
@@ -8,7 +8,7 @@ Tienda online especializada donde encontrarás todos los sintetizadores, accesor
 
 ## Librerías utilizadas:
 
-    -Bootstrap // v 5.1.3
+    -bootstrap // v 5.1.3
     -react-bootstrap // v2.3.1
     -react-router-dom // v 6.3.0
     -firebase // 9.8.2
